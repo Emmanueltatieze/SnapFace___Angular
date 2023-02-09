@@ -1,16 +1,28 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { FaceSnapComponent } from './face-snap/face-snap.component';
+
+//Changement de locale pour le mettre en Francais (on a d'abord ajouter le LOCAL_ID dans l'import des elements de @angular/core)
+import { registerLocaleData } from '@angular/common';
+import * as fr from '@angular/common/locales/fr';
+import { FaceSnapListComponent } from './face-snap-list/face-snap-list.component';
+import { FaceSnapHeaderComponent } from './face-snap-header/face-snap-header.component';
+/////////////////////////////////////////////
 
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [AppComponent, FaceSnapComponent, FaceSnapListComponent, FaceSnapHeaderComponent],
+  imports: [BrowserModule],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' }, // on ajote notre Locale de langue FR dans le tableau de providers
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  //on ajoute notre constructeur de LOCAL et on met le locale de langue FR par defaut
+  constructor() {
+    registerLocaleData(fr.default);
+  }
+  /////////////////////////////////
+}

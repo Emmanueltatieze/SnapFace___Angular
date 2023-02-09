@@ -1,0 +1,38 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"
+></script>
+
+<div class="face-snap-card" [ngClass]="{ snapped: HasSnapped === true }">
+  <h2>{{ faceSnap.title | titlecase }}</h2>
+  <!..p>
+  <!..{{ 0.3345 | number : "1.2-2"
+  }}><!..currency :'EUR':'code',percent:'1.1-1'..,,,number pour l'affichage des decimaux(DecimalPipe), currency pour la monnaie(CurrencyPipe) et percent pour le pourcentage(PercentPipe) >
+  <!../p>
+  <p>
+    Mis en ligne le
+    {{ faceSnap.createdDate | date : "dd MMMM yyyy, à HH:mm"
+    }}<!..longDate,longTime,mediumDate..>
+  </p>
+  <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
+  <p>{{ faceSnap.description }}</p>
+  <p *ngIf="faceSnap.SnapLocation">
+    <i>photo prise a : {{ faceSnap.SnapLocation }}</i>
+  </p>
+  <p>
+    <button type="button" class="btn btn-{{ snapColor }}" (click)="onAddSnap()">
+      {{ buttonSnapp }}
+    </button>
+    👍
+    <span [ngStyle]="{ color: 'rgb(0,' + faceSnap.snaps + ',0)' }">{{
+      faceSnap.snaps
+    }}</span>
+  </p>
+</div>
