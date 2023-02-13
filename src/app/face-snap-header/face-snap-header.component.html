@@ -1,5 +1,15 @@
 <header>
   <h1>
-    <strong>{{ "Snapface" | lowercase }}</strong>
+    <strong>Snapface</strong>
   </h1>
+  <br />
+  <nav>
+    <a
+      routerLink=""
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a
+    >
+    <a routerLink="faceSnaps" routerLinkActive="active">FaceSnaps</a>
+  </nav>
 </header>

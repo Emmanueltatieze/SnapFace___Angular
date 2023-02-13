@@ -12,8 +12,25 @@
   }}><!..currency :'EUR':'code',percent:'1.1-1'..,,,number pour l'affichage des decimaux(DecimalPipe), currency pour la monnaie(CurrencyPipe) et percent pour le pourcentage(PercentPipe) >
   <!../p>
 
+  <a routerLink="/faceSnaps">back</a>
+  <p>
+    Mis en ligne le
+    {{ faceSnap.createdDate | date : "dd MMMM yyyy, à HH:mm"
+    }}<!..longDate,longTime,mediumDate..>
+  </p>
+  <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
   <p>{{ faceSnap.description }}</p>
-
-  <button (click)="onViewfaceSnap()">VIEW</button>
+  <p *ngIf="faceSnap.SnapLocation">
+    <i>photo prise a : {{ faceSnap.SnapLocation }}</i>
+  </p>
+  <p>
+    <button type="button" class="btn btn-{{ snapColor }}" (click)="onAddSnap()">
+      {{ buttonSnapp }}
+    </button>
+    👍
+    <span [ngStyle]="{ color: 'rgb(0,' + faceSnap.snaps + ',0)' }">{{
+      faceSnap.snaps
+    }}</span>
+  </p>
   <hr />
 </div>
